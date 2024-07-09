@@ -5,7 +5,7 @@ from .models import Roles,Material, Event, Techcrew
 class TechcrewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Techcrew
-        field = [
+        fields = [
             'id',
             'Tname',
             'Trole'

@@ -33,6 +33,7 @@ class TechCrewAPIView(APIView):
         serializer = TechcrewSerializer(techcrew, many= True)
         return Response(serializer.data)
     
+    
 
 
     
