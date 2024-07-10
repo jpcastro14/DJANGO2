@@ -32,7 +32,7 @@ class Material(models.Model):
 
 class Techcrew(models.Model):
     Tname = models.CharField(max_length=255)
-    Trole = models.ForeignKey(Roles, on_delete=models.CASCADE )
+    Trole = models.ForeignKey(Roles, related_name="papel", on_delete=models.CASCADE )
 
     class Meta:
         verbose_name = "techcrew"
