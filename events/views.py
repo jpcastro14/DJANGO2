@@ -10,10 +10,12 @@ from .serializers import RolesSerializer, MaterialSerializer, EventSerializer, T
 
 
 class EventAPIView(APIView):
+
     def get(self, request):
         event = Event.objects.all()
         serializer = EventSerializer(event, many = True)
         return Response(serializer.data)
+    
 
 class MaterialAPIView(APIView):
     def get(self,request):
@@ -27,11 +29,15 @@ class RolesAPIView(APIView):
         serializer = RolesSerializer(roles, many = True)
         return Response(serializer.data)
     
+    def post (self, request):
+        serializer = Roles.objects.all()
+    
 class TechCrewAPIView(APIView):
     def get (self, request):
         techcrew = Techcrew.objects.all()
         serializer = TechcrewSerializer(techcrew, many= True)
         return Response(serializer.data)
+
     
     
 
