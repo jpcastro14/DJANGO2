@@ -31,7 +31,9 @@ class MaterialSerializer(serializers.ModelSerializer):
         ]
 
 class EventSerializer(serializers.ModelSerializer):
-    
+
+    Evmaterial = serializers.StringRelatedField()
+    Evleader = serializers.StringRelatedField()
 
     class Meta:
         model = Event

@@ -28,7 +28,7 @@ class Material(models.Model):
         verbose_name = "Material"
 
     def __str__(self):
-        return self.Mname
+        return (self.Mname)
 
 class Techcrew(models.Model):
     Tname = models.CharField(max_length=255)
