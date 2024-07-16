@@ -31,6 +31,7 @@ class MaterialSerializer(serializers.ModelSerializer):
         ]
 
 class EventSerializer(serializers.ModelSerializer):
+    
 
     class Meta:
         model = Event
