@@ -22,6 +22,8 @@ class RolesSerializer(serializers.ModelSerializer):
 
 class MaterialSerializer(serializers.ModelSerializer):
 
+    Mrole = serializers.StringRelatedField()
+
     class Meta:
         model = Material
         fields = [
