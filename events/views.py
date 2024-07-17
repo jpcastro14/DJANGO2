@@ -28,7 +28,10 @@ class TechCrewsAPIView():
     queryset = Techcrew.objects.all()
     serializer_class = TechcrewSerializer
 
-#class EventAPIView(generics.RetrieveUpdateDestroyAPIView):
+
+# Classes a serem aprendidas
+
+#class EventAPIView():
 
 #class MaterialAPIView():
 
