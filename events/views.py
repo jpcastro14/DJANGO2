@@ -24,7 +24,7 @@ class RolesAPIView(generics.ListCreateAPIView):
     serializer_class = RolesSerializer
 
  
-class TechCrewsAPIView():
+class TechCrewsAPIView(generics.ListCreateAPIView):
     queryset = Techcrew.objects.all()
     serializer_class = TechcrewSerializer
 

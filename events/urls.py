@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import EventAPIView, TechCrewAPIView, RolesAPIView, MaterialAPIView
+from .views import EventsAPIView, TechCrewsAPIView, RolesAPIView, MaterialsAPIView
 
 urlpatterns = [
-    path('event/', EventAPIView.as_view(), name='events'),
-    path('techs/', TechCrewAPIView.as_view(), name='technician'),
+    path('event/', EventsAPIView.as_view(), name='events'),
+    path('techs/', TechCrewsAPIView.as_view(), name='technician'),
     path('roles/', RolesAPIView.as_view(), name='roles'),
-    path('materials/', MaterialAPIView.as_view(), name='materials')
+    path('materials/', MaterialsAPIView.as_view(), name='materials')
 
 
 ]
