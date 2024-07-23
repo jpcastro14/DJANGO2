@@ -40,10 +40,10 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = [
-            'id',
             'Evname',
             'Evdate',
             'Evleader',
             'Evlocation',
-            'Evmaterial'
+            'Evmaterial',
+            'creation'
         ]
