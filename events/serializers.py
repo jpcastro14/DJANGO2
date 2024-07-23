@@ -3,6 +3,11 @@ from .models import Roles,Material, Event, Techcrew
 
 
 class TechcrewSerializer(serializers.ModelSerializer):
+
+    Trole = serializers.StringRelatedField()
+
+    #teste de commit
+
     class Meta:
         model = Techcrew
         fields = [

@@ -15,7 +15,7 @@ class EventsAPIView(generics.ListCreateAPIView):
     serializer_class = EventSerializer
 
 # Singular para os demais verbos HTTP
-class EventAPIView(generics.RetrieveDestroyAPIView):
+class EventAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
