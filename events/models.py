@@ -21,6 +21,7 @@ class Roles(models.Model):
 
 
 class Material(models.Model):
+    Mevent = models.ForeignKey(Event, related_name="Material", on_delete=models.CASCADE)
     Mrole = models.ForeignKey(Roles, related_name="Tipo", on_delete=models.CASCADE)
     Mname = models.CharField(max_length=255)
 
