@@ -2,59 +2,43 @@ from django.db import models
 
 # Create your models here.
 
+
 class Base(models.Model):
     creation = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
 
     class Meta:
-        abstract = True
-
-class Roles(models.Model):
-    Rname = models.CharField(max_length=255)
-
-    class Meta:
-        verbose_name = "Categoria"
-    
-    def __str__(self):
-        return self.Rname
+        abstract = True;
 
 
-class Material(models.Model):
-    Mevent = models.ForeignKey(Event, related_name="Material", on_delete=models.CASCADE)
-    Mrole = models.ForeignKey(Roles, related_name="Tipo", on_delete=models.CASCADE)
-    Mname = models.CharField(max_length=255)
+class Course(Base):
+    title = models.CharField(max_length=255)
+    url = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name = "Material"
+        verbose_name = 'Curso'
+        verbose_name_plural = 'Cursos'
 
     def __str__(self):
-        return (self.Mname)
+        return self.title
 
-class Techcrew(models.Model):
-    Tname = models.CharField(max_length=255)
-    Trole = models.ForeignKey(Roles, related_name="papel", on_delete=models.CASCADE )
+class Rating(Base):
+    course = models.ForeignKey(Course, related_name='ratings', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    comment = models.TextField(blank=True, default='')
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
 
     class Meta:
-        verbose_name = "techcrew"
-    
-    def __str__(self):
-        return self.Tname
+        verbose_name = 'Avaliação'
+        verbose_name_plural = "Avaliações"
+        unique_together = ['email','course']
 
-class Event(Base):
-    Evname = models.CharField(max_length=255)
-    Evdate = models.DateField()
-    Evleader = models.ForeignKey(Techcrew, related_name='techs', on_delete=models.CASCADE)
-    Evlocation = models.CharField(max_length=255)
-    Evmaterial = models.ForeignKey(Material, related_name="material", on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = "Evento"
-        verbose_name_plural = "Eventos"
 
     def __str__(self):
-        return self.Evname
-    
+        return f'{self.name} avaliou o curso {self.course} com nota {self.rating}'
+
 
 
 

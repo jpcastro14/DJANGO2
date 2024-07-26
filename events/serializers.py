@@ -1,55 +1,32 @@
 from rest_framework import serializers
-from .models import Roles,Material, Event, Techcrew
+from .models import Course, Rating
 
 
-class TechcrewSerializer(serializers.ModelSerializer):
-
-    Trole = serializers.StringRelatedField()
-
-    #teste de commit
+class RatingSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Techcrew
-        fields = [
-            'id',
-            'Tname',
-            'Trole'
-        ]
+        extra_kwargs = { 'email':{'write_only':True}}
 
-class RolesSerializer(serializers.ModelSerializer):
+        model = Rating
+        fields = [
+                  'id',
+                  'course',
+                  'name',
+                  'email',
+                  'comment',
+                  'rating',
+                  'created',
+                  'updated',
+                  'active']
+
+class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Roles
+        model = Course
         fields = [
             'id',
-            'Rname'
-        ]
-
-class MaterialSerializer(serializers.ModelSerializer):
-
-    Mrole = serializers.StringRelatedField()
-
-    class Meta:
-        model = Material
-        fields = [
-            'id',
-            'Mrole',
-            'Mname'
-        ]
-
-class EventSerializer(serializers.ModelSerializer):
-
-    Evmaterial = serializers.StringRelatedField()
-    Evleader = serializers.StringRelatedField()
-
-    class Meta:
-        model = Event
-        fields = [
-            'id',
-            'Evname',
-            'Evdate',
-            'Evleader',
-            'Evlocation',
-            'Evmaterial',
-            'creation'
+            'title',
+            'url',
+            'criacao',
+            'active'
         ]

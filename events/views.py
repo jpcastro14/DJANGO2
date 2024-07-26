@@ -5,11 +5,20 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Roles, Material, Event, Techcrew
-from .serializers import RolesSerializer, MaterialSerializer, EventSerializer, TechcrewSerializer
+from .models import  Course, Rating
+from .serializers import CourseSerializer, RatingSerializer 
 
 
-# Plural para tratar de GET e POST
+class CourseAPIView(generics.ListCreateAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+class RatingAPIView(generics.ListCreateAPIView):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer 
+
+
+""" # Plural para tratar de GET e POST
 class EventsAPIView(generics.ListCreateAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
@@ -48,7 +57,7 @@ class TechCrewsAPIView(generics.ListCreateAPIView):
 class TechCrewAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Techcrew.objects.all()
     serializer_class = TechcrewSerializer
-
+ """
 
 
 
