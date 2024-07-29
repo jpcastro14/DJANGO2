@@ -16,8 +16,7 @@ class RatingSerializer(serializers.ModelSerializer):
                   'comment',
                   'rating',
                   'created',
-                  'updated',
-                  'active']
+                  'updated',]
 
 class CourseSerializer(serializers.ModelSerializer):
 
