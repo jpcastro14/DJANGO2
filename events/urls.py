@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView
+from .views import CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView, UrlAPIView
 
 urlpatterns = [
     # Abaixo: Buscando toda a coleção de cursos
@@ -7,6 +7,9 @@ urlpatterns = [
 
     # Abaixo: Buscando um curso específico dentro de toda a coleção
     path('course/<int:pk>', CourseAPIView.as_view(), name='course'),
+
+    # Buscando url de um curso específico
+    path('course/<int:course_pk>/course_url', UrlAPIView.as_view(),name='course_url'),
 
     # Abaixo: Buscando a coleção de AVALIAÇÕES em um curso específico #
     path('courses/<int:course_pk>/ratings', RatingsAPIView.as_view(), name='course_ratings'),

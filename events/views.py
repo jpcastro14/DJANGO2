@@ -21,6 +21,12 @@ class CourseAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CourseSerializer
 
 
+class UrlAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+    
+
 class RatingsAPIView(generics.ListCreateAPIView):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
@@ -36,47 +42,11 @@ class RatingAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer 
 
+    def get_object(self):
+        if self.kwargs.get('course_pk'):
+            return get_object_or_404(self.get_queryset(), course_id=self.kwargs.get('course_pk'), pk=self.kwargs.get('rating_pk'))
+        return get_object_or_404(self.get_queryset(),pk=self.kwargs.get('rating_pk'))
 
-""" # Plural para tratar de GET e POST
-class EventsAPIView(generics.ListCreateAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-
-# Singular para os demais verbos HTTP
-class EventAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
-
-# -------------------------------------------------
-
-class MaterialsAPIView(generics.ListCreateAPIView):
-    queryset = Material.objects.all()
-    serializer_class = MaterialSerializer
-
-class MaterialAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Material.objects.all()
-    serializer_class = MaterialSerializer
-
-# --------------------------------------------------
-
-class RolesAPIView(generics.ListCreateAPIView):
-    queryset = Roles.objects.all()
-    serializer_class = RolesSerializer
-
-class RoleAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Roles.objects.all()
-    serializer_class = RolesSerializer
-
-# ------------------------------------------------    
- 
-class TechCrewsAPIView(generics.ListCreateAPIView):
-    queryset = Techcrew.objects.all()
-    serializer_class = TechcrewSerializer
-
-class TechCrewAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Techcrew.objects.all()
-    serializer_class = TechcrewSerializer
- """
 
 
 
