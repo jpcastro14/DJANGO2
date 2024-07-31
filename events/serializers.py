@@ -4,7 +4,7 @@ from .models import Course, Rating
 
 class RatingSerializer(serializers.ModelSerializer):
 
-    course = serializers.StringRelatedField()
+    #course = serializers.StringRelatedField()
 
     class Meta:
         extra_kwargs = { 'email':{'write_only':True}}
@@ -16,7 +16,10 @@ class RatingSerializer(serializers.ModelSerializer):
                   'name',
                   'email',
                   'comment',
-                  'rating',]
+                  'rating',
+                  'creation',
+                  'updated',
+                  ]
 
 class CourseSerializer(serializers.ModelSerializer):
 
