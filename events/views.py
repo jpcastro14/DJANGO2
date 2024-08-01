@@ -6,7 +6,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from .models import  Course, Rating
-from .serializers import CourseSerializer, RatingSerializer 
+from .serializers import CourseSerializer, RatingSerializer
 from rest_framework.generics import get_object_or_404
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
@@ -20,12 +20,11 @@ class CourseAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+    def get_queryset(self):
+        if self.kwargs.get('course_pk'):
+            return self.queryset.filter(course_id = self.kwargs.get('course_pk'))
+        return self.queryset.all()
 
-class UrlAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-
-    
 
 class RatingsAPIView(generics.ListCreateAPIView):
     queryset = Rating.objects.all()
