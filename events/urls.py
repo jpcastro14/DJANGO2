@@ -28,5 +28,5 @@ urlpatterns = [
 
     # Abaixo: Buscando uma avaliação específica de todas as avaliações criadas
     path('ratings/<int:pk>',RatingAPIView.as_view(),name='rating'),
-
+    
 ]

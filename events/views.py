@@ -61,11 +61,22 @@ class CourseViewSet(viewsets.ModelViewSet):
         serializer = RatingSerializer(course.ratings.all(), many=True)
         return Response(serializer.data)
 
+''' VIEWSET PADRÃO 
 class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
-    
+''' 
 
+# VIEWSET CUSTOMIZADA ---------------------------------------------- #
+
+class RatingViewSet(mixins.CreateModelMixin,
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin, 
+                    mixins.DestroyModelMixin, 
+                    viewsets.GenericViewSet):
+    
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
     
     
 
