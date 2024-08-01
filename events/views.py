@@ -12,6 +12,8 @@ from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
+# ----------------------------- API V1 ----------------------------- #
+
 class CoursesAPIView(generics.ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
@@ -47,9 +49,21 @@ class RatingAPIView(generics.RetrieveUpdateDestroyAPIView):
         return get_object_or_404(self.get_queryset(),pk=self.kwargs.get('rating_pk'))
 
 
+# ----------------------------- API V2 ----------------------------- #
 
+class CourseViewSet(viewsets.ModelViewSet):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
 
+    @action(detail=True, methods=['get'])
+    def Ratings(self, request, pk=None):
+        course = self.get_object()
+        serializer = RatingSerializer(course.ratings.all(), many=True)
+        return Response(serializer.data)
 
+class RatingViewSet(viewsets.ModelViewSet):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
     
 
     

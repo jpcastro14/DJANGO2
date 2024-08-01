@@ -1,5 +1,11 @@
 from django.urls import path
-from .views import CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView
+from .views import CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView, RatingViewSet, CourseViewSet
+from rest_framework.routers import SimpleRouter
+
+router = SimpleRouter()
+router.register('courses', CourseViewSet)
+router.register('ratings', RatingViewSet)
+
 
 urlpatterns = [
     # Abaixo: Buscando toda a coleção de cursos
