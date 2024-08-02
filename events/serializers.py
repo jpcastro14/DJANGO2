@@ -23,10 +23,10 @@ class RatingSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
 
     # 1. Nested Relationship - Boa solução para a WL Audio pois ja retorna todos os materiais cadastrados para cada evento
-    ratings = RatingSerializer(many=True, read_only=False)
+    #ratings = RatingSerializer(many=True, read_only=False)
 
     # 2. HyperLinked Related Field - Gera um link em URI para o registro da avaliação específica
-    #ratings = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='rating-detail')
+    ratings = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='rating-detail')
 
     # 3. Primary Key Related Field - Retorna a chave primaria da 
     #ratings = serializers.PrimaryKeyRelatedField(many=True, read_only=True)

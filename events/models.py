@@ -17,8 +17,8 @@ class Course(Base):
     url = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name = 'Curso'
-        verbose_name_plural = 'Cursos'
+        verbose_name = 'Course'
+        verbose_name_plural = 'Courses'
 
     def __str__(self):
         return self.title
