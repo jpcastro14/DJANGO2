@@ -31,8 +31,8 @@ class Rating(Base):
     rating = models.DecimalField(max_digits=2, decimal_places=1)
 
     class Meta:
-        verbose_name = 'Avaliação'
-        verbose_name_plural = "Avaliações"
+        verbose_name = 'Rating'
+        verbose_name_plural = "Ratings"
         unique_together = ['email','course']
 
 
