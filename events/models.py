@@ -14,7 +14,7 @@ class Base(models.Model):
 
 class Course(Base):
     title = models.CharField(max_length=255)
-    url = models.CharField(max_length=255)
+    url = models.CharField(max_length=255, blank=True)
 
     class Meta:
         verbose_name = 'Course'
