@@ -136,4 +136,10 @@ APPEND_SLASH = False
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "172.16.239.1:8000"
+]
+
+ALLOWED_HOSTS = [
+    "172.16.239.1",
+    'localhost'
 ]
