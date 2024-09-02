@@ -70,6 +70,7 @@ class RatingViewSet(viewsets.ModelViewSet):
 # VIEWSET CUSTOMIZADA ---------------------------------------------- #
 
 class RatingViewSet(mixins.CreateModelMixin,
+                    mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin, 
                     mixins.DestroyModelMixin, 
