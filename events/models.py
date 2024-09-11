@@ -13,8 +13,8 @@ class Base(models.Model):
 
 
 class Course(Base):
-    title = models.CharField(max_length=255, blank = True)
-    url = models.CharField(max_length=255, blank=True)
+    title = models.CharField(max_length=255, blank = False)
+    url = models.CharField(max_length=255, blank=False)
 
     class Meta:
         verbose_name = 'Course'
