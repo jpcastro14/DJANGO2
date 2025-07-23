@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView, RatingViewSet, CourseViewSet
+from .views import RecipeAPIView, CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView, RatingViewSet, CourseViewSet
 from rest_framework.routers import SimpleRouter
 
 router = SimpleRouter()
@@ -28,5 +28,8 @@ urlpatterns = [
 
     # Abaixo: Buscando uma avaliação específica de todas as avaliações criadas
     path('ratings/<int:pk>',RatingAPIView.as_view(),name='rating'),
-    
+
+    path("courses/recipes",RecipeAPIView.as_view(), name='receitas' )
+
+       
 ]

@@ -43,6 +43,20 @@ class Rating(Base):
         return f'{self.name} avaliou o curso {self.course} com nota {self.rating}'
 
 
+class Recipe(models.Model):
+    name = models.CharField(max_length=50)
+    prepareTime = models.CharField(max_length=50)
+    dificulty = models.CharField(max_length=50)
+    ingredients = models.CharField(max_length=50)
+    prepareSteps = models.CharField(max_length=50)
+    isVegan = models.BooleanField()
+
+    class Meta: 
+        verbose_name = "Receita"
+        verbose_name_plural = "Receitas"
+
+    def __str__(self):
+        return self.name
 
 
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Course, Rating
+from .models import Course, Rating, Recipe
 
 
 class RatingSerializer(serializers.ModelSerializer):
@@ -46,3 +46,10 @@ class CourseSerializer(serializers.ModelSerializer):
             'active',
             'ratings'
         ]
+
+
+class RecipeSerializer(serializers.ModelSerializer):
+
+    class Meta: 
+        model = Recipe
+        fields = "__all__"

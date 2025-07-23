@@ -5,8 +5,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from .models import  Course, Rating
-from .serializers import CourseSerializer, RatingSerializer
+from .models import  Course, Rating, Recipe
+from .serializers import CourseSerializer, RatingSerializer, RecipeSerializer
 from rest_framework.generics import get_object_or_404
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
@@ -82,7 +82,7 @@ class RatingViewSet(mixins.CreateModelMixin,
     
 
 
-    
-
-
+class RecipeAPIView(generics.ListCreateAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
 
