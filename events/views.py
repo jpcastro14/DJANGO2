@@ -91,3 +91,9 @@ def vegan_recipes(request):
     recipe = get_list_or_404(Recipe,isVegan=True)
     serializer = RecipeSerializer(recipe, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def unitary_recipe(request,id):
+    recipe = get_object_or_404(Recipe, id=id)
+    serializer = RecipeSerializer(recipe, many=False)
+    return Response(serializer.data)

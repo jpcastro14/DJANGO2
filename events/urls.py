@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RecipeAPIView, CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView, RatingViewSet, CourseViewSet, vegan_recipes
+from .views import RecipeAPIView, CoursesAPIView,CourseAPIView, RatingsAPIView, RatingAPIView, RatingViewSet, CourseViewSet, vegan_recipes, unitary_recipe
 from rest_framework.routers import SimpleRouter
 
 router = SimpleRouter()
@@ -31,7 +31,7 @@ urlpatterns = [
 
     path("courses/recipes",RecipeAPIView.as_view(), name='receitas' ),
 
-    path('courses/recipes/vegan', vegan_recipes, name="Receitas Veganas")
+    path('courses/recipes/vegan', vegan_recipes, name="Receitas Veganas"),
 
-       
+    path('courses/recipes/<int:id>/', unitary_recipe, name="Receita por ID")   
 ]
