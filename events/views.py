@@ -8,6 +8,8 @@ from rest_framework import status
 from .models import  Course, Rating, Recipe
 from .serializers import CourseSerializer, RatingSerializer, RecipeSerializer
 from rest_framework.generics import get_object_or_404
+from django.shortcuts import get_list_or_404
+from rest_framework.decorators import api_view
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -80,9 +82,12 @@ class RatingViewSet(mixins.CreateModelMixin,
     serializer_class = RatingSerializer
     
     
-
-
 class RecipeAPIView(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
+@api_view(['GET'])
+def vegan_recipes(request):
+    recipe = get_list_or_404(Recipe,isVegan=True)
+    serializer = RecipeSerializer(recipe, many=True)
+    return Response(serializer.data)
